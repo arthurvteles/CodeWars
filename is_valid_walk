@@ -1,0 +1,54 @@
+def is_valid_walk(walk):
+
+    list_index = []
+    test = 0
+    if len(walk) != 10:
+        return False
+
+    for i in range(len(walk)):
+        test = 0
+
+        while i in list_index:
+            i += 1
+
+        if i >= 10:
+            break
+
+        for j in range(i+1, len(walk)):
+
+            if walk[i] == 'n' and walk[j] == 's':
+                if j not in list_index:
+                    list_index.append(i)
+                    list_index.append(j)
+                    test = 1
+                    break
+
+            if walk[i] == 's' and walk[j] == 'n':
+                if j not in list_index:
+                    list_index.append(i)
+                    list_index.append(j)
+                    test = 1
+                    break
+
+            if walk[i] == 'w' and walk[j] == 'e':
+                if j not in list_index:
+                    list_index.append(i)
+                    list_index.append(j)
+                    test = 1
+                    break
+
+            if walk[i] == 'e' and walk[j] == 'w':
+                if j not in list_index:
+                    list_index.append(i)
+                    list_index.append(j)
+                    test = 1
+                    break
+
+        if test == 0:
+            return False
+
+    if len(list_index) == 10:
+        return True
+    else:
+        return False
+
